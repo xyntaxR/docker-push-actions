@@ -15,6 +15,12 @@ jobs:
       - uses: action/checkout@v2
     - name: Use Node.js
       - uses: action/setup-node@v2
+    name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
     - name: Compose up the docker
       - run: docker-compose -f "docker-compose.yml" up -d --build
     - name: List all container   #remove this step once you're done investigating
