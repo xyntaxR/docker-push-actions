@@ -4,7 +4,7 @@ services:
       build: ./
       image: survey-form-v2:latest
       restart: always
-      command: npm start
+      command: npm start && npm test
       volumes:
         - ./src:/var/www/app/src
         - ./package.json:/var/www/app/package.json
